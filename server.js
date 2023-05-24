@@ -11,4 +11,11 @@ app.use(express.static(path.join(__dirname, "/public")))
 
 app.listen(4956, () => console.log(`server running on 4956`))
 
-    
+// const sequelize = new Sequelize(CONNECTION_STRING, {
+//     dialect: 'postgres',
+//     dialectOptions: {
+//         ssl: {
+//             rejectUnauthorized: false,
+//         },
+//     },
+// });
