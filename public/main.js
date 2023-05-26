@@ -12,7 +12,7 @@ const hidePopup = () => {
 }
 
 const testMessage = () => {
-  axios.get("http://localhost:4956/api/testMessage")
+  axios.get("/api/testMessage")
     .then(res => {
       alert(res.data)
     })
