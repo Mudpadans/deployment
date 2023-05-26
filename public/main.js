@@ -11,5 +11,12 @@ const hidePopup = () => {
     popup.style.display = 'none'
 }
 
+const testMessage = () => {
+  axios.get("http://localhost:4956/api/testMessage")
+    .then(res => {
+      alert(res.data)
+    })
+}
 
+testButton.addEventListener('click', testMessage)
 

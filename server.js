@@ -20,7 +20,10 @@ var rollbar = new Rollbar({
 
 rollbar.log('Hello World')
 
-app.get('/api/testMessage', )
+app.get('/api/testMessage', (req, res) => {
+    res.status(200).send("it's a miracle!!")
+    rollbar.info("it's a miracle!!")
+})
 
 app.get('/public', (req, res) => {
     try {
