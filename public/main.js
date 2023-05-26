@@ -1,3 +1,4 @@
+const testButton = document.getElementById("test-btn")
 
 const showPopup = () => {
     var popup = document.getElementById("popupBox")
@@ -11,11 +12,4 @@ const hidePopup = () => {
 }
 
 
-
-var Rollbar = require('rollbar')
-var rollbar = new Rollbar({
-  accessToken: '669e015a1f314342a0f2340aa84451ca',
-  captureUncaught: true,
-  captureUnhandledRejections: true,
-})
 

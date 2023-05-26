@@ -20,7 +20,7 @@ var rollbar = new Rollbar({
 
 rollbar.log('Hello World')
 
-app.get('/testMessage')
+app.get('/api/testMessage', )
 
 app.get('/public', (req, res) => {
     try {
