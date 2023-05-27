@@ -8,7 +8,7 @@ const calculatorButton = document.getElementById('calculateButton')
 
 const showPopup = () => {
     // popup.style.display = 'block'
-    axios.get("http://localhost:4956/api/showPopUp")
+    axios.get("/api/showPopUp")
     .then(res => {
       if (res.data.shouldShowPopup) {
         popup.style.display = 'block';
@@ -18,7 +18,7 @@ const showPopup = () => {
 
 const hidePopup = () => {
     // popup.style.display = 'none'
-    axios.get("http://localhost:4956/api/hidePopup")
+    axios.get("/api/hidePopup")
     .then(res => {
       if (!res.data.shouldShowPopup) {
       popup.style.display = 'none';
@@ -27,7 +27,7 @@ const hidePopup = () => {
   }
 
 const testMessage = () => {
-  axios.get("http://localhost:4956/api/testMessage")
+  axios.get("/api/testMessage")
     .then(res => {
       alert(res.data)
     })
@@ -38,7 +38,7 @@ const calculate = () => {
   let num1 = parseFloat(document.getElementById("num1").value)
   let num2 = parseFloat(document.getElementById("num2").value)
 
-  axios.post("http://localhost:4956/api/calculate", {
+  axios.post("/api/calculate", {
     operation: operation,
     num1: num1,
     num2: num2
