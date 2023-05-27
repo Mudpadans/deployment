@@ -35,11 +35,40 @@ app.get('/api/testMessage', (req, res) => {
     rollbar.info("it's a miracle!!")
 })
 
+app.post('/api/calculate', (req, res) => {
+    const { operation, num1, num2 } = req.body
+
+    let result
+    switch (operation) {
+        case "addition":
+          result = num1 + num2;
+          break;
+        case "subtraction":
+          result = num1 - num2;
+          break;
+        case "multiplication":
+          result = num1 * num2;
+          break;
+        case "division":
+        if (num2 === 0) {
+            rollbar.critical("attemped to divide by zero")
+            return res.status(400).send({ error: "Division by zero is not allowed" });
+        }
+          result = num1 / num2;
+          break;
+        default: 
+          return res.status(400).send({ error: "Invalid operation" });
+    }
+    
+
+    res.status(200).send({ result })
+})
+
 try {
     mysteryFunction();
-    rollbar.warning("unused function")
 } catch (error) {
     rollbar.error('non-existent function')
+    rollbar.warning("unused function")
     console.error(error)
 }
 

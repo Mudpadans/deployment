@@ -1,7 +1,10 @@
 const testButton = document.getElementById("test-btn")
-const popup = document.getElementById("popupBox")
 const link = document.querySelector('a')
+const popup = document.getElementById("popupBox")
 const hideButton = document.getElementById('hide-btn')
+const operationSelector = document.getElementById('operation')
+const calculatorButton = document.getElementById('calculateButton')
+
 
 const showPopup = () => {
     // popup.style.display = 'block'
@@ -30,6 +33,34 @@ const testMessage = () => {
     })
 }
 
+const calculate = () => {
+  let operation = document.getElementById("operation").value
+  let num1 = parseFloat(document.getElementById("num1").value)
+  let num2 = parseFloat(document.getElementById("num2").value)
+
+  axios.post("http://localhost:4956/api/calculate", {
+    operation: operation,
+    num1: num1,
+    num2: num2
+  })
+    .then(res => {
+      let result = res.data.result;
+      document.getElementById("result").innerHTML = "Result: " + result;
+    })
+    .catch(error => {
+      console.error("Error occurred:", error)
+    })
+
+}
+
 link.addEventListener('click', showPopup)
 hideButton.addEventListener('click', hidePopup)
 testButton.addEventListener('click', testMessage)
+operationSelector.addEventListener('change', () => {
+  const selectedOperation = operationSelector.value;
+  calculate(selectedOperation)
+})
+calculatorButton.addEventListener('click', () => {
+  calculate()
+})
+

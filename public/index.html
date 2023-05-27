@@ -9,15 +9,33 @@
 </head>
 <body>
     <h1>Click If You Dare!</h1>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer noopener" onclick="showPopup()">Press Me Please</a> 
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer noopener" onclick="showPopup()">Press Me Please</a>
+
         <div id="popupBox" class="popup">
             <p>LOL</p>
             <button id="hide-btn" onclick="hidePopup()">Close</button>
         </div>
+
         <button id="test-btn" onclick="">test</button>
+
         <h2>A Basic Calculator</h2>
             <label for="num1">Number 1:</label>
-            <input type="number" id="num1"
+            <input type="number" id="num1"><br>
+
+            <label for="num2">Number 2:</label>
+            <input type="number" id="num2"><br>
+
+            <label for="operation">Operation:</label>
+            <select id="operation">
+                <option value="addition">Addition</option>
+                <option value="subtraction">Subtraction</option>
+                <option value="multiplication">Multiplication</option>
+                <option value="division">Division</option>
+            </select><br>
+
+            <button id="calculateButton" onlick="calculate()">Calculate</button>
+
+            <div id="result"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
     <script src="main.js"></script>
 </body>
