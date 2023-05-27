@@ -62,13 +62,13 @@ app.post('/api/calculate', (req, res) => {
     res.status(200).send({ result })
 })
 
-try {
-    mysteryFunction();
-} catch (error) {
-    rollbar.error('non-existent function')
-    rollbar.warning("unused function")
-    console.error(error)
-}
+// try {
+//     mysteryFunction();
+// } catch (error) {
+//     rollbar.error('non-existent function')
+//     rollbar.warning("unused function")
+//     console.error(error)
+// }
 
 app.listen(4956, () => console.log(`server running on 4956`))
 
