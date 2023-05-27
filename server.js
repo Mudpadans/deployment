@@ -18,19 +18,19 @@ var rollbar = new Rollbar({
 
 rollbar.log('Hello World')
 
-app.get('/api/showPopup', (req, res) => {
+app.get('http://localhost:4956/api/showPopup', (req, res) => {
     const shouldShowPopup = true;
     res.status(200).send({ shouldShowPopup });
     rollbar.info("popup shows up")
 })
 
-app.get('/api/hidePopup', (req, res) => {
+app.get('http://localhost:4956/api/hidePopup', (req, res) => {
     const shouldShowPopup = false;
     res.status(200).send({ shouldShowPopup });
     rollbar.info("popup hidden")
 })
 
-app.get('/api/testMessage', (req, res) => {
+app.get('http://localhost:4956/api/testMessage', (req, res) => {
     res.status(200).send("it's a miracle!!")
     rollbar.info("it's a miracle!!")
 })
