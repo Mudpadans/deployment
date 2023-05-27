@@ -16,24 +16,24 @@ app.use(express.static(path.join(__dirname, "/public")))
 
 rollbar.log('Hello World')
 
-app.get('/api/showPopup', (req, res) => {
+app.get('http://localhost:4956/api/showPopup', (req, res) => {
     const shouldShowPopup = true;
     res.status(200).send({ shouldShowPopup });
     rollbar.info("popup shows up")
 })
 
-app.get('/api/hidePopup', (req, res) => {
+app.get('http://localhost:4956/api/hidePopup', (req, res) => {
     const shouldShowPopup = false;
     res.status(200).send({ shouldShowPopup });
     rollbar.info("popup hidden")
 })
 
-app.get('/api/testMessage', (req, res) => {
+app.get('http://localhost:4956/api/testMessage', (req, res) => {
     res.status(200).send("it's a miracle!!")
     rollbar.info("it's a miracle!!")
 })
 
-app.post('/api/calculate', (req, res) => {
+app.post('http://localhost:4956/api/calculate', (req, res) => {
     const { operation, num1, num2 } = req.body
 
     let result
