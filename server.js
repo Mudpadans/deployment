@@ -35,7 +35,7 @@ app.get('http://localhost:4956/api/testMessage', (req, res) => {
     rollbar.info("it's a miracle!!")
 })
 
-app.post('/api/calculate', (req, res) => {
+app.post('http://localhost:4956/api/calculate', (req, res) => {
     const { operation, num1, num2 } = req.body
 
     let result
