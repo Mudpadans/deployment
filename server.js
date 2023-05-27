@@ -1,41 +1,39 @@
 const express = require('express')
 const cors = require('cors')
-
 const path = require('path')
+var Rollbar = require('rollbar')
 
 const app = express()
+var rollbar = new Rollbar({
+    accessToken: '32e927c44b6742288668c16a45e1074b',
+    captureUncaught: true,
+    captureUnhandledRejections: true,
+  })
+
 app.use(cors())
 app.use(express.json())
-
 app.use(express.static(path.join(__dirname, "/public")))
-
-var Rollbar = require('rollbar')
-var rollbar = new Rollbar({
-  accessToken: '32e927c44b6742288668c16a45e1074b',
-  captureUncaught: true,
-  captureUnhandledRejections: true,
-})
 
 rollbar.log('Hello World')
 
-app.get('http://localhost:4956/api/showPopup', (req, res) => {
+app.get('/api/showPopup', (req, res) => {
     const shouldShowPopup = true;
     res.status(200).send({ shouldShowPopup });
     rollbar.info("popup shows up")
 })
 
-app.get('http://localhost:4956/api/hidePopup', (req, res) => {
+app.get('/api/hidePopup', (req, res) => {
     const shouldShowPopup = false;
     res.status(200).send({ shouldShowPopup });
     rollbar.info("popup hidden")
 })
 
-app.get('http://localhost:4956/api/testMessage', (req, res) => {
+app.get('/api/testMessage', (req, res) => {
     res.status(200).send("it's a miracle!!")
     rollbar.info("it's a miracle!!")
 })
 
-app.post('http://localhost:4956/api/calculate', (req, res) => {
+app.post('/api/calculate', (req, res) => {
     const { operation, num1, num2 } = req.body
 
     let result
